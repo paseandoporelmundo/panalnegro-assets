@@ -1,0 +1,63 @@
+name: CI/CD Panal Negro Assets
+
+# Se ejecuta en cada push a la rama main o cuando se abre un Pull Request
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch: # Permite dispararlo a mano desde la pestaña "Actions" en GitHub
+
+# Permisos requeridos para desplegar a GitHub Pages
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: false
+
+jobs:
+  # =========================================================================
+  # 1. CI (INTEGRACIÓN CONTINUA): Valida que ningún asset esté roto
+  # =========================================================================
+  validate:
+    runs-on: ubuntu-latest
+    name: Validar integridad de SVGs y Assets
+    steps:
+      - name: Clonar código
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Ejecutar pruebas automatizadas de SVGs
+        run: |
+          python validar_assets.py
+
+  # =========================================================================
+  # 2. CD (DESPLIEGUE CONTINUO): Publica el visor en GitHub Pages si pasa el CI
+  # =========================================================================
+  deploy-pages:
+    needs: validate
+    if: github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    name: Desplegar visor a GitHub Pages
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Clonar código
+        uses: actions/checkout@v4
+
+      - name: Preparar artefactos para Pages
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+
+      - name: Desplegar en GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,608 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Panal Negro · Catálogo de Assets & Badges de Footer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&family=Manrope:wght@400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --pn-negro: #0C0B09;
+      --pn-carbon: #1C1A18;
+      --pn-grafito: #2D2A26;
+      --pn-piedra-oscura: #46433D;
+      --pn-piedra: #5F5A52;
+      --pn-arena-oscura: #8D887D;
+      --pn-arena: #A9A397;
+      --pn-linea: #DDD5C6;
+      --pn-crema: #F4EFE6;
+      --pn-papel: #FBF8F2;
+      --pn-ambar: #F5A524;
+      --pn-dur: 120ms;
+      --pn-ease: cubic-bezier(0.2, 0, 0, 1);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      background: var(--pn-negro);
+      color: var(--pn-crema);
+      font-family: 'Manrope', system-ui, sans-serif;
+      line-height: 1.5;
+      padding: 40px 24px 80px;
+      -webkit-font-smoothing: antialiased;
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; }
+    header {
+      padding-bottom: 32px;
+      border-bottom: 1px solid var(--pn-grafito);
+      margin-bottom: 40px;
+    }
+    .tag {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--pn-ambar);
+      display: inline-block;
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+      color: var(--pn-papel);
+      margin-bottom: 12px;
+    }
+    p.lead {
+      color: var(--pn-arena);
+      font-size: 16px;
+      max-width: 720px;
+      margin-bottom: 24px;
+    }
+    
+    /* Config Bar */
+    .config-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 16px;
+      background: var(--pn-carbon);
+      border: 1px solid var(--pn-grafito);
+      padding: 16px 20px;
+      border-radius: 12px;
+      margin-bottom: 40px;
+    }
+    .config-label {
+      font-size: 13px;
+      font-weight: 500;
+      color: var(--pn-arena);
+    }
+    .config-input {
+      background: var(--pn-negro);
+      border: 1px solid var(--pn-piedra-oscura);
+      border-radius: 6px;
+      padding: 8px 12px;
+      color: var(--pn-papel);
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 13px;
+      width: 200px;
+    }
+    .config-input:focus {
+      outline: 2px solid var(--pn-ambar);
+      border-color: transparent;
+    }
+    .theme-picker {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-left: auto;
+    }
+    .theme-btn {
+      padding: 6px 12px;
+      border-radius: 6px;
+      border: 1px solid var(--pn-grafito);
+      background: var(--pn-negro);
+      color: var(--pn-arena);
+      font-size: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      transition: all var(--pn-dur) var(--pn-ease);
+    }
+    .theme-btn.active, .theme-btn:hover {
+      background: var(--pn-piedra-oscura);
+      color: var(--pn-papel);
+      border-color: var(--pn-arena-oscura);
+    }
+
+    /* Sections */
+    section { margin-bottom: 56px; }
+    h2 {
+      font-size: 20px;
+      font-weight: 600;
+      color: var(--pn-papel);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    h2 .badge-cnt {
+      font-size: 11px;
+      font-family: 'JetBrains Mono', monospace;
+      padding: 2px 8px;
+      border-radius: 999px;
+      background: var(--pn-carbon);
+      color: var(--pn-ambar);
+      border: 1px solid var(--pn-grafito);
+    }
+    p.sec-sub {
+      color: var(--pn-arena);
+      font-size: 14px;
+      margin-bottom: 20px;
+    }
+
+    /* Grilla de items */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 16px;
+    }
+    .card {
+      background: var(--pn-carbon);
+      border: 1px solid var(--pn-grafito);
+      border-radius: 10px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--pn-dur) var(--pn-ease);
+    }
+    .card:hover { border-color: var(--pn-piedra-oscura); }
+    .card-canvas {
+      padding: 28px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 110px;
+      transition: background var(--pn-dur) var(--pn-ease);
+    }
+    /* Lienzos dinámicos */
+    .canvas-negro { background: #0C0B09; }
+    .canvas-crema { background: #F4EFE6; }
+    .canvas-blanco { background: #FFFFFF; }
+    .canvas-carbon { background: #1C1A18; }
+    .canvas-zinc { background: #18181B; }
+
+    .card-meta {
+      padding: 14px 16px;
+      border-top: 1px solid var(--pn-grafito);
+      background: rgba(12, 11, 9, 0.4);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: auto;
+    }
+    .card-title {
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--pn-papel);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .card-file {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--pn-arena-oscura);
+    }
+    .card-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 4px;
+    }
+    .btn {
+      flex: 1;
+      padding: 7px 10px;
+      border-radius: 6px;
+      border: 1px solid var(--pn-grafito);
+      background: var(--pn-negro);
+      color: var(--pn-arena);
+      font-size: 11px;
+      font-weight: 500;
+      cursor: pointer;
+      font-family: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all var(--pn-dur) var(--pn-ease);
+    }
+    .btn:hover {
+      background: var(--pn-piedra-oscura);
+      color: var(--pn-papel);
+      border-color: var(--pn-arena-oscura);
+    }
+    .btn.copied {
+      background: #14532D;
+      color: #86EFAC;
+      border-color: #22C55E;
+    }
+
+    /* Simulador de Footer */
+    .footer-sim {
+      background: #141311;
+      border: 1px solid var(--pn-grafito);
+      border-radius: 12px;
+      padding: 40px;
+      margin-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+    .footer-sim-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--pn-piedra);
+      font-size: 13px;
+      border-bottom: 1px solid var(--pn-grafito);
+      padding-bottom: 24px;
+    }
+    .footer-sim-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+    .footer-sim-copy {
+      color: var(--pn-arena-oscura);
+      font-size: 13px;
+    }
+
+    /* Toast */
+    #toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      background: var(--pn-papel);
+      color: var(--pn-negro);
+      padding: 10px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+      transform: translateY(100px);
+      opacity: 0;
+      transition: all 200ms var(--pn-ease);
+      pointer-events: none;
+      z-index: 1000;
+    }
+    #toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <span class="tag">Panal Negro · Brand Assets CDN</span>
+    <h1>Catálogo de Assets & Badges de Footer</h1>
+    <p class="lead">
+      Recursos oficiales de la marca listos para consumir vía CDN (jsDelivr) en sitios web de clientes y proyectos propios sin problemas de CORS ni compresión.
+    </p>
+
+    <div class="config-bar">
+      <label class="config-label" for="ghUser">Usuario / Org de GitHub:</label>
+      <input type="text" id="ghUser" class="config-input" value="panalnegro" spellcheck="false" />
+
+      <label class="config-label" for="ghRepo" style="margin-left: 12px;">Repo:</label>
+      <input type="text" id="ghRepo" class="config-input" value="panalnegro-assets" spellcheck="false" />
+
+      <div class="theme-picker">
+        <span class="config-label">Fondo de muestra:</span>
+        <button class="theme-btn active" data-canvas="canvas-negro">Negro</button>
+        <button class="theme-btn" data-canvas="canvas-carbon">Carbón</button>
+        <button class="theme-btn" data-canvas="canvas-zinc">Zinc</button>
+        <button class="theme-btn" data-canvas="canvas-crema">Crema</button>
+        <button class="theme-btn" data-canvas="canvas-blanco">Blanco</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- SECCIÓN 1: BADGES DE FOOTER -->
+  <section>
+    <h2>Badges para Footers <span class="badge-cnt">12 versiones</span></h2>
+    <p class="sec-sub">Diseñados a altura óptica estandarizada (36px cápsula / 24px minimal) con vectorizado exacto sin dependencias de fuentes externas.</p>
+
+    <div class="grid">
+      <!-- 1. badge-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-dark.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Desarrollado por (Oscuro) <span class="card-file">badge-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-dark.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 2. badge-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-light.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Desarrollado por (Claro) <span class="card-file">badge-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-light.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3. badge-sistemas-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-sistemas-dark.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Sistemas por (Oscuro) <span class="card-file">badge-sistemas-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-sistemas-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-sistemas-dark.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4. badge-sistemas-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-sistemas-light.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Sistemas por (Claro) <span class="card-file">badge-sistemas-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-sistemas-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-sistemas-light.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 5. badge-desarrollo-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-desarrollo-dark.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Desarrollo por (Oscuro) <span class="card-file">badge-desarrollo-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-desarrollo-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-desarrollo-dark.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 6. badge-desarrollo-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-desarrollo-light.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Desarrollo por (Claro) <span class="card-file">badge-desarrollo-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-desarrollo-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-desarrollo-light.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 7. badge-compact-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-compact-dark.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Compacto Logo (Oscuro) <span class="card-file">badge-compact-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-compact-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-compact-dark.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 8. badge-compact-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-compact-light.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Compacto Logo (Claro) <span class="card-file">badge-compact-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-compact-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-compact-light.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 9. badge-minimal-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-minimal-dark.svg" alt="" height="24" /></div>
+        <div class="card-meta">
+          <div class="card-title">Minimal / Transparente (Oscuro) <span class="card-file">badge-minimal-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-minimal-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-minimal-dark.svg', 24)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10. badge-minimal-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-minimal-light.svg" alt="" height="24" /></div>
+        <div class="card-meta">
+          <div class="card-title">Minimal / Transparente (Claro) <span class="card-file">badge-minimal-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-minimal-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-minimal-light.svg', 24)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11. badge-animado-dark -->
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="badges/badge-animado-dark.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Animado con Pulso (Oscuro) <span class="card-file">badge-animado-dark.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-animado-dark.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-animado-dark.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 12. badge-animado-light -->
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="badges/badge-animado-light.svg" alt="" height="36" /></div>
+        <div class="card-meta">
+          <div class="card-title">Animado con Pulso (Claro) <span class="card-file">badge-animado-light.svg</span></div>
+          <div class="card-actions">
+            <button class="btn" onclick="copyCdn('badges/badge-animado-light.svg')">Copiar URL CDN</button>
+            <button class="btn" onclick="copyImgTag('badges/badge-animado-light.svg', 36)">Copiar &lt;img&gt;</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 2: LOGOS MAESTROS -->
+  <section>
+    <h2>Logos Oficiales SVG <span class="badge-cnt">Vectorial</span></h2>
+    <p class="sec-sub">Formatos maestros de la marca para barras de navegación, cabeceras o presentaciones.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="logos/horizontal-negativo.svg" alt="" height="28" /></div>
+        <div class="card-meta">
+          <div class="card-title">Horizontal Crema / Ámbar <span class="card-file">horizontal-negativo.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/horizontal-negativo.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-blanco"><img src="logos/horizontal-color.svg" alt="" height="28" /></div>
+        <div class="card-meta">
+          <div class="card-title">Horizontal Tinta / Ámbar <span class="card-file">horizontal-color.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/horizontal-color.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-crema"><img src="logos/simbolo-color.svg" alt="" height="44" /></div>
+        <div class="card-meta">
+          <div class="card-title">Símbolo Color (Tinta/Ámbar) <span class="card-file">simbolo-color.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/simbolo-color.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="logos/simbolo-crema.svg" alt="" height="44" /></div>
+        <div class="card-meta">
+          <div class="card-title">Símbolo Monocromo Crema <span class="card-file">simbolo-crema.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/simbolo-crema.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="logos/simbolo-negativo.svg" alt="" height="44" /></div>
+        <div class="card-meta">
+          <div class="card-title">Símbolo Negativo (Crema/Ámbar) <span class="card-file">simbolo-negativo.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/simbolo-negativo.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="logos/vertical-negativo.svg" alt="" height="54" /></div>
+        <div class="card-meta">
+          <div class="card-title">Vertical Negativo <span class="card-file">vertical-negativo.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('logos/vertical-negativo.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 3: ANIMACIONES -->
+  <section>
+    <h2>Animaciones de Marca <span class="badge-cnt">SVG & MP4</span></h2>
+    <p class="sec-sub">Animaciones puras sin dependencias de JavaScript.</p>
+
+    <div class="grid">
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="animaciones/simbolo-pulso.svg" alt="" height="56" /></div>
+        <div class="card-meta">
+          <div class="card-title">Símbolo con Pulso Ámbar <span class="card-file">simbolo-pulso.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('animaciones/simbolo-pulso.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="card-canvas canvas-negro"><img src="animaciones/logo-animado.svg" alt="" height="32" /></div>
+        <div class="card-meta">
+          <div class="card-title">Logo con Intro de Celdas <span class="card-file">logo-animado.svg</span></div>
+          <div class="card-actions"><button class="btn" onclick="copyCdn('animaciones/logo-animado.svg')">Copiar URL CDN</button></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SECCIÓN 4: SIMULADOR DE FOOTER -->
+  <section>
+    <h2>Simulador de Footer</h2>
+    <p class="sec-sub">Vista previa de cómo se integra el badge en un footer real de un sitio de cliente.</p>
+
+    <div class="footer-sim">
+      <div class="footer-sim-top">
+        <span>Empresa Cliente S.A. — Gestión Operativa</span>
+        <span>contacto@cliente.com</span>
+      </div>
+      <div class="footer-sim-bottom">
+        <div class="footer-sim-copy">© 2026 Empresa Cliente S.A. Todos los derechos reservados.</div>
+        <a href="https://panalnegro.com" target="_blank" rel="noopener" style="text-decoration:none;">
+          <img src="badges/badge-dark.svg" alt="Desarrollado por Panal Negro" height="36" />
+        </a>
+      </div>
+    </div>
+  </section>
+</div>
+
+<div id="toast">Copiado al portapapeles</div>
+
+<script>
+  function getCdnUrl(relPath) {
+    const user = document.getElementById('ghUser').value.trim() || 'panalnegro';
+    const repo = document.getElementById('ghRepo').value.trim() || 'panalnegro-assets';
+    return `https://cdn.jsdelivr.net/gh/${user}/${repo}@main/${relPath}`;
+  }
+
+  function showToast(text) {
+    const t = document.getElementById('toast');
+    t.innerText = text;
+    t.classList.add('show');
+    setTimeout(() => t.classList.remove('show'), 2000);
+  }
+
+  function copyText(val, msg = 'Copiado al portapapeles') {
+    navigator.clipboard.writeText(val).then(() => showToast(msg));
+  }
+
+  function copyCdn(path) {
+    copyText(getCdnUrl(path), 'URL jsDelivr copiada');
+  }
+
+  function copyImgTag(path, h) {
+    const url = getCdnUrl(path);
+    const snippet = `<a href="https://panalnegro.com" target="_blank" rel="noopener" aria-label="Desarrollado por Panal Negro">\n  <img src="${url}" alt="Desarrollado por Panal Negro" height="${h}" loading="lazy" />\n</a>`;
+    copyText(snippet, 'Código <img> copiado');
+  }
+
+  // Cambio interactivo de fondos de canvas
+  document.querySelectorAll('.theme-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.theme-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const cls = btn.dataset.canvas;
+      document.querySelectorAll('.card-canvas').forEach(c => {
+        c.className = 'card-canvas ' + cls;
+      });
+    });
+  });
+</script>
+</body>
+</html>

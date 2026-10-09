@@ -1,0 +1,89 @@
+<!-- Panal Negro · Ejemplos de integración en footers de sitios web -->
+
+<!-- ================================================================= -->
+<!-- OPCIÓN 1: La más directa (Tag <img> con CDN jsDelivr)            -->
+<!-- Reemplazá <usuario> por tu usuario u organización de GitHub        -->
+<!-- ================================================================= -->
+
+<!-- Variante Fondo Oscuro (Cápsula estándar) -->
+<a href="https://panalnegro.com" target="_blank" rel="noopener" aria-label="Desarrollado por Panal Negro" style="display:inline-block; text-decoration:none; transition:opacity .15s ease;">
+  <img 
+    src="https://cdn.jsdelivr.net/gh/<usuario>/panalnegro-assets@main/badges/badge-dark.svg" 
+    alt="Desarrollado por Panal Negro" 
+    height="36" 
+    loading="lazy"
+    style="display:block; height:36px; width:auto;"
+  />
+</a>
+
+<!-- Variante Fondo Claro (Cápsula clara) -->
+<a href="https://panalnegro.com" target="_blank" rel="noopener" aria-label="Desarrollado por Panal Negro" style="display:inline-block; text-decoration:none; transition:opacity .15s ease;">
+  <img 
+    src="https://cdn.jsdelivr.net/gh/<usuario>/panalnegro-assets@main/badges/badge-light.svg" 
+    alt="Desarrollado por Panal Negro" 
+    height="36" 
+    loading="lazy"
+    style="display:block; height:36px; width:auto;"
+  />
+</a>
+
+
+<!-- ================================================================= -->
+<!-- OPCIÓN 2: Componente HTML + CSS liviano con micro-interacción    -->
+<!-- Ideal si querés controlar el hover o integrarlo con Tailwind/CSS  -->
+<!-- ================================================================= -->
+
+<style>
+  .pn-footer-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    background: #0C0B09;
+    border: 1px solid #2D2A26;
+    color: #A9A397;
+    font-family: 'Manrope', system-ui, -apple-system, sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    text-decoration: none;
+    line-height: 1;
+    transition: transform 120ms cubic-bezier(0.2, 0, 0, 1), border-color 120ms cubic-bezier(0.2, 0, 0, 1), color 120ms cubic-bezier(0.2, 0, 0, 1);
+  }
+  .pn-footer-link:hover {
+    transform: translateY(-1px);
+    border-color: #46433D;
+    color: #F4EFE6;
+  }
+  .pn-footer-link img {
+    height: 16px;
+    width: auto;
+    display: block;
+  }
+  .pn-footer-link strong {
+    color: #F4EFE6;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.02em;
+  }
+</style>
+
+<a href="https://panalnegro.com" target="_blank" rel="noopener" class="pn-footer-link">
+  <span>Desarrollo</span>
+  <img src="https://cdn.jsdelivr.net/gh/<usuario>/panalnegro-assets@main/logos/simbolo-color.svg" alt="" aria-hidden="true" />
+  <strong>PANAL NEGRO</strong>
+</a>
+
+
+<!-- ================================================================= -->
+<!-- OPCIÓN 3: Web Component encapsulado (Shadow DOM, 0 colisiones CSS) -->
+<!-- ================================================================= -->
+
+<!-- Importar script (una sola vez en el <head> o antes de cerrar <body>) -->
+<script src="https://cdn.jsdelivr.net/gh/<usuario>/panalnegro-assets@main/snippets/badge.js" defer></script>
+
+<!-- Insertar el elemento donde quieras que aparezca -->
+<panal-negro-badge theme="dark" variant="badge"></panal-negro-badge>
+
+<!-- O versión minimalista para fondo claro: -->
+<!-- <panal-negro-badge theme="light" variant="minimal"></panal-negro-badge> -->

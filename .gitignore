@@ -1,0 +1,5 @@
+# Gitignore para panalnegro-assets
+.DS_Store
+Thumbs.db
+*.tmp
+*~
